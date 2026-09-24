@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concentrix Simulator // by Kuldeep</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">CONCENTRIX<span>SIM</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="versant.html">Versant</a></li>
+    <li><a href="mockcall.html">Mock Call</a></li>
+    <li><a href="accent.html">Accent</a></li>
+    <li><a href="score.html">Score</a></li>
+    <li><a href="interview.html">Interview</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-user" id="navUser">👤 Guest</div>
+</nav>
+
+<section class="hero">
+  <h1>🎯 Concentrix Exam Simulator</h1>
+  <p class="hero-sub">Versant • Mock Call • Accent • Interview • Score • Dashboard</p>
+  <div>
+    <a href="versant.html" class="btn primary">🚀 Start Versant Test</a>
+    <a href="mockcall.html" class="btn green">📞 Mock Call</a>
+  </div>
+</section>
+
+<div class="container">
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🎤</div>
+      <h3>Versant Test</h3>
+      <p>Voice + Non-Voice full exam</p>
+      <a href="versant.html" class="btn small primary">Start ➡️</a>
+    </div>
+    <div class="card">
+      <div class="icon">📞</div>
+      <h3>Mock Call</h3>
+      <p>Angry customer handling</p>
+      <a href="mockcall.html" class="btn small primary">Start ➡️</a>
+    </div>
+    <div class="card">
+      <div class="icon">🗣️</div>
+      <h3>Accent Trainer</h3>
+      <p>Fix Indian-English mistakes</p>
+      <a href="accent.html" class="btn small primary">Practice ➡️</a>
+    </div>
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>Score Calculator</h3>
+      <p>Predict your Versant score</p>
+      <a href="score.html" class="btn small primary">Check ➡️</a>
+    </div>
+    <div class="card">
+      <div class="icon">💼</div>
+      <h3>Interview Prep</h3>
+      <p>HR + Operations round</p>
+      <a href="interview.html" class="btn small primary">Prepare ➡️</a>
+    </div>
+    <div class="card">
+      <div class="icon">📈</div>
+      <h3>Dashboard</h3>
+      <p>Track your progress</p>
+      <a href="dashboard.html" class="btn small primary">View ➡️</a>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:40px;">
+    <h2 style="color:#f472b6; margin-bottom:14px;">👤 Enter Your Name</h2>
+    <input type="text" id="globalName" placeholder="Enter your full name..." style="max-width:400px; margin:0 auto 12px; display:block;">
+    <button class="btn primary" onclick="saveName()">Save ✅</button>
+    <div class="feedback" id="nameFb"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>Made with ❤️ by <strong>Kuldeep</strong> | Concentrix Simulator v1.0</p>
+  <p class="footer-links">
+    <a href="about.html">About</a> • 
+    <a href="dashboard.html">Dashboard</a> • 
+    <a href="versant.html">Versant</a>
+  </p>
+</footer>
+
+<script>
+function saveName(){
+  const name = document.getElementById("globalName").value.trim();
+  const fb = document.getElementById("nameFb");
+  if(name.length < 2){ fb.textContent = "⚠️ Please enter your name!"; fb.className = "feedback bad"; return; }
+  localStorage.setItem("candidateName", name);
+  document.getElementById("navUser").textContent = "👤 " + name;
+  fb.textContent = "✅ Name saved! You can start the exam now.";
+  fb.className = "feedback good";
+}
+window.onload = () => {
+  const saved = localStorage.getItem("candidateName");
+  if(saved){
+    document.getElementById("navUser").textContent = "👤 " + saved;
+    document.getElementById("globalName").value = saved;
+  }
+};
+</script>
+</body>
+</html>
